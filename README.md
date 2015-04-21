@@ -1,1 +1,1 @@
-# WhatToBuy
+# WhatToBuy - An Ionic hybrid app
