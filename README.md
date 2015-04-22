@@ -1,6 +1,6 @@
 # WhatToBuy - An Ionic Framework hybrid app 
 
-Developed with TDD approach and relying heavily on unittesting to make sure the system was working as intended. This is done by using Jasmine2 and the Karma testrunner.
+Developed with TDD approach and relying heavily on unittesting to make sure the system is working as intended. This is done by using Jasmine2 and the Karma testrunner.
 
 ## Techstack
 Unittesting involved testing:
