@@ -1,0 +1,39 @@
+<ion-view title="Handleliste" ng-controller="LoginController as vm" ng-init="vm.LoginController()">
+    <ion-header-bar class="bar-positive">
+        <h1 class="title">Handleliste</h1>
+    </ion-header-bar>
+    <ion-content class="">
+
+        <form ng-submit="vm.login(vm.username, vm.password)">
+            <div class="list">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Brukernavn</span>
+                    <input type="text" placeholder="" ng-model="vm.username">
+                </label>
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Passord</span>
+                    <input type="password" placeholder="" ng-model="vm.password">
+                </label>
+
+                <div class="padding">
+                    <button type="submit" class="button button-block button-positive">logg inn</button>
+                </div>
+            </div>
+        </form>
+
+        <div class="padding10 textcenter ">
+            <p>- eller -</p>
+            <a href="" ng-click="vm.createNewUser()">lag ny bruker</a>
+        </div>
+
+        <div class="padding10 textcenter ">
+            <a href="" ng-click="vm.showErrors()">vis feilmeldinger</a>
+        </div>
+
+        <!--<div class="padding10 textcenter ">-->
+            <!--<a href="" ng-click="vm.showLoading()">test backknappen</a>-->
+        <!--</div>-->
+
+    </ion-content>
+
+</ion-view>

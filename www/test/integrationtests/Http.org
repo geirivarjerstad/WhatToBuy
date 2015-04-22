@@ -1,0 +1,124 @@
+﻿// The app
+angular
+    .module('app', []) //my real app, which doesn't matter here
+
+/*******************************************
+ * This factory is the System Under Test (SUT)
+ * It makes an XHR call via $http -> $httpBackend
+ * Here it gets "http-hello.html" from this plunker
+ * but it could be a call to any service to get anything
+ * such as data from your app database via a Web Api.
+ **********************************************/
+    .factory('SUT', function ($http) { // stand-in for svc that calls $http
+        return function () {
+            //return $http({method: "GET", url: "www.vg.no"});
+            return $http.post("http://homegarg1337.dyn-o-saur.com/WhatToBuy.Service/" + "authenticateUser?format=json&feedId=" + "asdasd" + "&password=" + "asdasd");
+        }
+    });
+
+describe('When calling SUT', function () {
+
+    var $httpBackend, $rootScope, expectedResponse, fin, sut, tester;
+
+    ddescribe('with midway tester', function () {
+
+        // DO NOT CALL Angular-mocks module or inject methods!!
+        // Use ngMidwayTester instead
+        beforeEach(function () {
+            expectedResponse = null;
+            tester = ngMidwayTester('app');
+            sut = tester.inject('SUT');
+        });
+
+        afterEach(function () {
+            tester.destroy();
+            tester = null;
+        });
+
+        // Asynchronous test with real XHR request/response
+        it('should make a real XHR GET for http-hello.html', function () {
+            expectedResponse = "Hello, $http!";
+            console.log("real GET http-hello.html test");
+
+            runAsync(function (done) {
+                getHello().finally(done);
+            }, "getHello", 1000);
+        })
+
+    })
+
+    describe('with ngMock', function () {
+
+        // DO NOT use ngMidwayTester !!
+        // CALL Angular-mocks module or inject methods instead
+        beforeEach(module('app'));
+
+        beforeEach(inject(function (_$httpBackend_, SUT) {
+            expectedResponse = null;
+            $httpBackend = _$httpBackend_;
+            $httpBackend.whenGET(/^\w+.*/).respond("Hello, kitty");
+            sut = SUT;
+        }));
+
+        // synchronous test with mocked XHR response
+        it('should make a mocked XHR GET for http-hello.html', function () {
+            expectedResponse = "Hello, kitty";
+            console.log("mocked GET http-hello.html test");
+            var wasDone = false;
+
+            getHello().finally(function () {
+                wasDone = true;
+            });
+
+            // flush mock $httpBackend & promises
+            $httpBackend.flush();
+
+            expect(wasDone).toBe(true); // confirm callBacks were called
+        })
+    })
+
+    /*** Helpers ***/
+
+    function getHello() {
+
+        return sut()
+            .success(function (data, status) {
+                console.log("Response was: " + data);
+                expect(data).toBe(expectedResponse);
+                expect(status).toBe(200);
+            })
+            .error(function (data, status) {
+                var err = "status: " + status +
+                    "error: " + data || "Request failed";
+                console.log(err);
+                // force a test failure
+                expect(data).toBe("See console.log");
+            });
+    }
+
+    // Stuff you need to do run an async test in mocha style
+    // prior to Jasmine v.2.0
+    function runAsync(block, optionalTimeoutMessage, optionalTimeout) {
+        var self = this;
+        var isDone = false;
+        var done = function () {
+            isDone = true;
+        };
+
+        runs(function () {
+            try {
+                block.call(self, done);
+            } catch (err) {
+                done();
+                var msg = "block failed in runAsync with " + (err.message || err);
+                console.log(msg)
+                expect(msg).toBe(false);
+            }
+        });
+
+        waitsFor(function () {
+            return isDone;
+        }, optionalTimeoutMessage, optionalTimeout);
+    }
+
+});

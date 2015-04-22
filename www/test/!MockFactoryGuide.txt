@@ -1,0 +1,8 @@
+- Kun MOCK variabler skal være globale. F.eks. ikke LoginStore i en Controller test
+    - Kun det objektet som blir testet skal være globalt f.eks. FeedController i FeedController.xxxx.tests.js
+- lag alle spyOn funksjoner i hver eneste test
+
+referanse: FeedController.AddMyFeed.tests.js
+
+Factory mocks:
+referanse: C:\Online\Dropbox\MinUtvikling\Ionic\WhatToBuy\www\test\IonicLoadingExtensions.tests.js

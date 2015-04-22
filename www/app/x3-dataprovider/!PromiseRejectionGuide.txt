@@ -1,0 +1,2 @@
+
+- Alle Rejects skal returnere en Error som f.eks.: deferred.reject(new FeedServiceException("Servererror: " + reason.ResponseStatus.Message));

@@ -1,0 +1,89 @@
+<ion-view title="Delte handlelister" ng-controller="SharedFeedController as vm" ng-init="vm.SharedFeedController()">
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+
+    <ion-nav-buttons side="right">
+        <button class="button button-balanced" style="border: 0px" ng-click="vm.loadSharedFeeds()">
+            Oppdater
+        </button>
+    </ion-nav-buttons>
+
+    <div class="bar bar-subheader">
+        <h2 class="title">Sub Header</h2>
+    </div>
+
+    <ion-header-bar class="bar bar-subheader item-input-inset">
+        <div class="row">
+            <label class="item-input-wrapper flex1" style="flex: 2">
+                <!--<i class="icon ion-plus-round placeholder-icon"></i>-->
+                <input type="search" placeholder="ShareId" ng-model="vm.shareId">
+            </label>
+            <label class="item-input-wrapper" style="flex: 3; margin-left: 4px;margin-right: 4px">
+                <!--<i class="icon ion-plus-round placeholder-icon"></i>-->
+                <input type="search" placeholder="Feedpassword" ng-model="vm.feedpassword">
+            </label>
+            <button class="col button button-lightpositive" style="border: 0px"
+                    ng-click="vm.addSharedFeed(vm.shareId, vm.feedpassword)">
+                Legg til
+            </button>
+        </div>
+    </ion-header-bar>
+
+    <ion-content class="">
+        <ion-list>
+            <div type="item-text-wrap">
+                <div class="container">
+
+                    <div class="flex1 bold vertically-centered">
+                        <p>
+                            Navn
+                        </p>
+                    </div>
+
+                    <div class="flex-none vertically-centered bold">
+                        <p class="ng-binding">
+                            ShareId
+                        </p>
+                    </div>
+
+                    <div class="flex-none vertically-centered">
+                        <p>
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="item" ng-repeat="item in vm.sharedFeedList" ng-click="vm.navigateToCommodityByFeedId(item.feedId)" type="item-text-wrap">
+                <div class="container">
+
+                    <div class="flex1 bold vertically-centered">
+
+                        <p>
+                            {{item.name}}
+                        </p>
+
+                    </div>
+
+                    <div class="flex-none vertically-centered">
+                        <p>
+                            {{item.feedId}}
+                        </p>
+                    </div>
+
+
+                    <div class="flex-none vertically-centered">
+                        <p>
+                            <a class="button button-icon icon ion-minus-circled"
+                               ng-click="vm.deleteSharedFeed(item.feedId)"></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </ion-list>
+
+    </ion-content>
+
+</ion-view>
+
+

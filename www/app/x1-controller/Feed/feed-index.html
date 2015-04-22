@@ -1,0 +1,96 @@
+<ion-view title="Dine handlelister" ng-controller="FeedController as vm" ng-init="vm.FeedController()">
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+
+    <ion-nav-buttons side="right">
+        <button class="button button-balanced" style="border: 0px" ng-click="vm.loadSharedFeeds()">
+            Oppdater
+        </button>
+    </ion-nav-buttons>
+
+    <div class="bar bar-subheader">
+        <h2 class="title">Sub Header</h2>
+    </div>
+
+    <ion-header-bar class="bar bar-subheader item-input-inset">
+        <div class="row">
+            <label class="col-80 item-input-wrapper">
+                <i class="icon ion-plus-round placeholder-icon"></i>
+                <input type="search" placeholder="Legg til handleliste" ng-model="vm.newFeedName">
+            </label>
+            <button class="col button button-lightpositive" style="border: 0px"
+                    ng-click="vm.addFeed(vm.newFeedName)">
+                Ok
+            </button>
+        </div>
+    </ion-header-bar>
+
+    <ion-content class="">
+        <ion-list>
+            <div type="item-text-wrap">
+                <div class="container">
+
+                    <div class="flex1 bold vertically-centered">
+                        <p>
+                            Navn
+                        </p>
+                    </div>
+
+                    <div class="flex-none vertically-centered bold">
+                        <p class="ng-binding">
+                            ShareId
+                        </p>
+                    </div>
+
+                    <div class="flex-none vertically-centered">
+                        <p>
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="item" ng-repeat="item in vm.feedList" ng-click="vm.navigateToCommodityByFeedId(item.feedId)" type="item-text-wrap">
+                <div class="container">
+
+                    <div class="flex1 bold vertically-centered">
+
+                        <p>
+                            {{item.name}}
+                        </p>
+
+                    </div>
+
+                    <div class="flex-none vertically-centered">
+                        <p>
+                            {{item.feedId}}
+                        </p>
+                    </div>
+
+
+                    <div class="flex-none vertically-centered">
+                        <p>
+                            <a class="button button-icon icon ion-minus-circled" ng-click="vm.deletePrivateFeed(item.feedId)" ></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </ion-list>
+
+    </ion-content>
+
+    <!--<div class="row commodity">-->
+        <!--<div class="col-80 col-center">-->
+            <!--<h2 class="">{{item.name}} </h2>-->
+        <!--</div>-->
+        <!--<div class="col col-center col-offset-11">-->
+            <!--<label class="checkbox">-->
+                <!--<input type="checkbox" name="check-box" ng-model="item.isPurchased"-->
+                       <!--ng-click="vm.clickedCommodity(item)"/>-->
+            <!--</label>-->
+        <!--</div>-->
+    <!--</div>-->
+
+</ion-view>
+
+

@@ -1,0 +1,85 @@
+/* Empty. Add your own CSS if you like */
+
+.commodity {
+    height: 30px;
+}
+
+.row.commodity {
+    padding: 0px 0px 0px 5px;
+}
+
+.padding10 {
+    padding: 10px;
+}
+
+.textcenter {
+    text-align: center;
+
+}
+
+.container {
+    display: -webkit-flex;
+    display: flex;
+    padding-left: 8px;
+}
+
+.flex-none {
+    -webkit-flex: none;
+    flex: none;
+    width: 70px;
+    text-align: center;
+}
+
+.flex1 {
+    -webkit-flex: 1;
+    flex: 1;
+    /* padding-top: 4px; */
+    padding-bottom: 4px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.icon.ion-minus-circled:after {
+    line-height: 20px;
+}
+
+.icon.ion-minus-circled:before {
+    line-height: 20px;
+    font-size: 20px;
+}
+
+.button.ion-minus-circled {
+    color: #ef4e3a;
+    line-height: 20px;
+    min-height: 20px;
+}
+
+.vertically-centered {
+    margin: auto;
+}
+
+.container p {
+    font-size: 16px;
+}
+
+.my-dropdown {
+    width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.errortext {
+    /* font-family: Monospace; */
+    font-size: 10px;
+    line-height: 100%;
+}
+
+.menuitems .item {
+    font-size: 20px;
+    height: 40px;
+    vertical-align:middle;
+    line-height: 40px;
+}
+

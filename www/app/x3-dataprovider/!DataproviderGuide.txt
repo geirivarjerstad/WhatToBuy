@@ -1,0 +1,4 @@
+
+- Alle Dataproviders (services) skal validere inn og ut data. Slik blir de selvstendige
+- Ingen Dataproviders skal referere til hverandre. Lag en Repository for å gjøre dette.
+

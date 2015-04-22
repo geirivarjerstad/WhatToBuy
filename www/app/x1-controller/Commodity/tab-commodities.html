@@ -1,0 +1,63 @@
+<ion-view title="Handleliste" ng-controller="CommodityController as vm" ng-init="vm.CommodityController()">
+
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+
+    <ion-nav-buttons side="right">
+        <button class="button button-balanced" style="border: 0px" ng-click="vm.forceRefresh()">
+            Oppdater
+        </button>
+    </ion-nav-buttons>
+
+
+    <ion-content class="">
+        <div style="width: 100%; padding: 4px; font-size: 30px">
+            <select class="my-dropdown" ng-change="vm.feedDropdownChange()" ng-model="vm.selectedFeed" ng-options="feed.name for feed in vm.feedList"></select><br>
+        </div>
+
+        <ion-list>
+            <div class="item" ng-repeat="item in vm.commodities" type="item-text-wrap">
+                <div class="container">
+
+                    <div class="flex1 bold vertically-centered">
+
+                        <p>
+                            {{item.name}}
+                        </p>
+
+                    </div>
+
+                    <div class="flex-none vertically-centered">
+                        <label class="checkbox">
+                            <input type="checkbox" name="check-box" ng-model="item.isPurchased"
+                                   ng-click="vm.clickedCommodity(item)"/>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+        </ion-list>
+
+    </ion-content>
+
+    <ion-footer-bar class="bar-stable" style="padding: 0px">
+
+        <div class="bar bar-header item-input-inset">
+            <div class="row">
+                <label class="col-80 item-input-wrapper">
+                    <i class="icon ion-plus-round placeholder-icon"></i>
+                    <input type="search" placeholder="Legg til vare" ng-model="vm.newCommodityName">
+                </label>
+                <button class="col button button-lightpositive" style="border: 0px"
+                        ng-click="vm.addCommodity(vm.newCommodityName)">
+                    Ok
+                </button>
+            </div>
+        </div>
+    </ion-footer-bar>
+
+
+</ion-view>
+
+

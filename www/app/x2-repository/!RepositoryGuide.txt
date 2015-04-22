@@ -1,0 +1,3 @@
+
+- Repositories trenger ikke å validere og mappe modellen som kommer fra en dataProvider fordi dataProvideren har allerede gjort det.
+    - Men en Repository kan validere parametere til funksjonene den eksponerer

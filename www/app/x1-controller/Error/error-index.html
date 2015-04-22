@@ -1,0 +1,27 @@
+<ion-view title="Errors" ng-controller="ErrorController as vm" ng-init="vm.ErrorController()">
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+
+    <ion-nav-buttons side="right">
+        <button class="button button-balanced icon ion-ios7-copy placeholder-icon" style="border: 0px" ng-click="vm.copyToClipboard()">
+        </button>
+        <button class="button button-balanced icon ion-trash-a placeholder-icon" style="border: 0px; margin-left: 4px" ng-click="vm.deleteErrors()">
+        </button>
+        <button class="button button-balanced icon ion-loop placeholder-icon" style="border: 0px; margin-left: 4px" ng-click="vm.loadErrors()">
+        </button>
+    </ion-nav-buttons>
+
+    <ion-content class="">
+        <ion-list>
+            <div class="item errortext" ng-repeat="item in vm.errors" type="item-text-wrap">
+                Date:<div>{{item.date | date:'yyyy-MM-dd HH:mm:ss Z'}}</div>
+                Error:<span class="item-text-wrap">{{item.myError}}</span>
+            </div>
+        </ion-list>
+
+    </ion-content>
+
+</ion-view>
+
+

@@ -1,0 +1,3 @@
+- Controllere kan ikke kalle på andre Controllere f.eks. i inject
+    - Bruk repositories for dette
+
