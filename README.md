@@ -1,6 +1,6 @@
 # WhatToBuy
 
-## A super simple Shoppinglist developed in Ionic Framework
+## A super simple Shoppinglist developed with the Ionic Framework
 
 
 
