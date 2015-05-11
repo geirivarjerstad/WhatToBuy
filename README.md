@@ -1,5 +1,8 @@
 # WhatToBuy - An Ionic Framework hybrid app 
 
+On Google Play:
+https://play.google.com/store/apps/details?id=com.teamlikeus.whattobuy
+
 Developed with TDD approach and relying heavily on unittesting to make sure the system is working as intended. This is done by using Jasmine2 and the Karma testrunner.
 
 ## Techstack
